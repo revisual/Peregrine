@@ -1,0 +1,13 @@
+extends layout
+block content
+    .jumbotron
+        .container
+            .alert.alert-danger(role="alert")
+                h1 Upload Failed
+                p #{error.message}
+
+            a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/upload') UPLOAD ANOTHER MOVIE
+            a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/list') DOWNLOAD COMPLETED JOBS
+
+
+

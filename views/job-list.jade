@@ -1,0 +1,29 @@
+extends layout
+block content
+    .jumbotron
+        .container
+            h1 Job List
+            if( files.length == 0 )
+                p No jobs available or pending.
+            if( error != undefined)
+                .alert.alert-danger.alert-dismissible(role="alert") <span aria-hidden="true">&times;</span> <strong>ERROR!</strong> #{error}
+                    button.close(type="button", data-dismiss="alert", aria-label="Close")
+
+            ul.list-group
+                each item in files
+                    if(  item.report.isComplete() )
+                        li.list-group-item.list-group-item-success <span class="glyphicon glyphicon-download" aria-hidden="true"></span> <a href='http://#{host}/download?file=#{item.folder}' class='text-success'> Download <strong>#{item.folder}</strong> containing <strong>#{item.images.length}</strong> images </a>
+                            button.close(type='button', onclick="window.location='http://#{host}/delete?file=#{item.folder}';") <span aria-hidden='true'>&times;</span>
+
+                    else if (item.report.error)
+                        li.list-group-item.list-group-item-danger <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>#{item.folder}</strong> has failed : #{item.report.msg}
+                            button.close(type='button', onclick="window.location='http://#{host}/delete?file=#{item.folder}';") <span aria-hidden='true'>&times;</span>
+                    else
+                        li.list-group-item.list-group-item-info <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <strong>#{item.folder}</strong> is still being processed (#{item.report.getProgress()})
+
+
+
+
+            a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/upload') UPLOAD ANOTHER MOVIE
+
+

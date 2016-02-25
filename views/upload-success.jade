@@ -1,0 +1,16 @@
+extends layout
+block content
+    .jumbotron
+        .container
+            .alert.alert-success(role="alert")
+                h1 Upload Successful
+                p
+                    | <strong> #{videofile.name}</strong> has uploaded successfully.
+                    | You may have to wait sometime for it to be processed.
+
+
+            a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/upload') UPLOAD ANOTHER MOVIE
+            a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/list') DOWNLOAD COMPLETED JOBS
+
+
+
