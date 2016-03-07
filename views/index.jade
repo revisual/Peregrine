@@ -3,7 +3,7 @@ block content
     .jumbotron
         .container
             h1 Upload Video
-            form.form-horizontal(accept-charset="utf-8", method="post", action="/upload", enctype="multipart/form-data")
+            form#uploadForm.form-horizontal(accept-charset="utf-8", method="post", action="/upload", enctype="multipart/form-data")
                 .form-group
                     label.col-sm-3.control-label Print 1 in:
                     .col-sm-9
@@ -18,8 +18,8 @@ block content
                         input.form-control(type="number", name="endTime", value='0')
                 .form-group
                     .col-sm-offset-3.col-sm-9
-                        input(type="file", name="videofile", multiple="multiple")
-                button.btn.btn-success.btn-lg.btn-block(type="submit") UPLOAD
-                a.btn.btn-info.btn-lg.btn-block(href='http://#{host}/list') DOWNLOAD COMPLETED JOBS
+                        input#fileInput(type="file", name="videofile", multiple="multiple", accept="video/*")
+                button#uploadBtn.btn.btn-success.btn-lg.btn-block(type="submit") FIRST SELECT VIDEO
+                a#pendingBtn.btn.btn-info.btn-lg.btn-block(href='http://#{host}/list') DOWNLOAD COMPLETED JOBS
 
 
